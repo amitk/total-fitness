@@ -31,3 +31,13 @@
 
 en:
   hello: "Hello world"
+  model:
+    create:
+      success: "%{model_name} created successfully"
+      failure: "%{model_name} creation failed"
+    update:
+      success: "%{model_name} updated successfully"
+      failure: "%{model_name} updation failed"
+    delete:
+      success: "%{model_name} deleted successfully"
+      failure: "%{model_name} deletion failed"
