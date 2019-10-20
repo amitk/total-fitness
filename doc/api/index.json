@@ -1,0 +1,17 @@
+{
+  "resources": [
+    {
+      "name": "Users",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "listing users",
+          "link": "users/listing_users.json",
+          "groups": "all",
+          "route": "/api/v1/users",
+          "method": "get"
+        }
+      ]
+    }
+  ]
+}

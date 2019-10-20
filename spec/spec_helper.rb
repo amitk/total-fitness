@@ -4,6 +4,7 @@
 # this file to always be loaded, without a need to explicitly require it in any
 # files.
 #
+require 'rspec_api_documentation/dsl'
 # Given that it is always loaded, you are encouraged to keep this file as
 # light-weight as possible. Requiring heavyweight dependencies from this file
 # will add to the boot time of your test suite on EVERY test run, even for an
@@ -12,6 +13,11 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+# RSpecAPIDocumentation
+RspecApiDocumentation.configure do |config|
+  config.format = :json
+end
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
