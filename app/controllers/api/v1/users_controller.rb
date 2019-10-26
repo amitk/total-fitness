@@ -16,7 +16,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def create
-    user = new User(user_params)
+    user = User.new(user_params)
     if user.save
       render_success(data: {
         user: serialize_resource(user, ::V1::UserSerializer),
@@ -61,6 +61,6 @@ class Api::V1::UsersController < Api::V1::BaseController
   private
 
   def user_params
-    params.required(:user).permit([:name, :mobile, :email, :dob])
+    params.required(:user).permit([:first_name, :last_name, :mobile, :email, :gender, :password])
   end
 end

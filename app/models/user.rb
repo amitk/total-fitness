@@ -2,6 +2,6 @@ class User < ApplicationRecord
   include Authenticable
   include Tokenable
 
-  validates :email, :name, :mobile, presence: :true
+  validates :email, :first_name, :last_name, :gender, :password, :mobile, presence: :true
 
 end

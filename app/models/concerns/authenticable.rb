@@ -12,7 +12,7 @@ module Authenticable
     end
   end
 
-  def friendly_token
+  def friendly_token(length)
     rlength = (length * 3) / 4
     SecureRandom.urlsafe_base64(rlength).tr('lIO0', 'sxyz')
   end
