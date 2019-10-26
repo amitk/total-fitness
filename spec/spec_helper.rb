@@ -16,7 +16,7 @@ require 'factory_bot_rails'
 #
 # RSpecAPIDocumentation
 RspecApiDocumentation.configure do |config|
-  config.format = :json
+  # config.format = :json
 end
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
