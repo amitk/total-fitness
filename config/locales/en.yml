@@ -32,6 +32,9 @@
 en:
   hello: "Hello world"
   model:
+    session:
+      success: "Signed in successfully"
+      failure: "Signed in failed"
     create:
       success: "%{model_name} created successfully"
       failure: "%{model_name} creation failed"

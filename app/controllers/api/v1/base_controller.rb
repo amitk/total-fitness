@@ -1,4 +1,5 @@
 class Api::V1::BaseController < ApplicationController
+  include AuthenticationConcern
 
   def render_success(data: nil, message: nil, status: :ok)
     render json: { data: data, message: message }, status: status

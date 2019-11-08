@@ -20,7 +20,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     if user.save
       render_success(data: {
         user: serialize_resource(user, ::V1::UserSerializer),
-        message: I18n.t('user.create.success', model_name: 'User')
+        message: I18n.t('model.create.success', model_name: 'User')
       })
     else
       render_failure(data: {
@@ -35,7 +35,7 @@ class Api::V1::UsersController < Api::V1::BaseController
       if user.update
         render_success(data: {
           user: serialize_resource(user, ::V1::UserSerializer),
-          message: I18n.t('user.update.success', model_name: 'User')
+          message: I18n.t('model.update.success', model_name: 'User')
         })
         return
       end
