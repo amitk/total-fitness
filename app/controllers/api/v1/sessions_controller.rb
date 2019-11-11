@@ -3,7 +3,7 @@ class Api::V1::SessionsController < Api::V1::BaseController
   skip_before_action :authenticate_using_token, only: [:create]
 
   def create
-    user = User.find_by(email: params[:email], password: params[:password])
+    user = User.find_by(email: params[:user][:email], password: params[:user][:password])
     if user
       @current_user = user
       render_success(data: {
