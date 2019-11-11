@@ -27,6 +27,5 @@ module AuthenticationConcern
   def assign_tokens_to_headers
     response.headers['X-USER-AUTH-TOKEN'] = current_user.auth_token
     response.headers['X-USER-JWT-TOKEN'] = current_user.jwt_token
-    binding.pry
   end
 end
