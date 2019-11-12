@@ -18,8 +18,7 @@ module AuthenticationConcern
     payload = JWT.decode(@jwt_token, @auth_token)
       if payload
         @current_user = payload[0]['resource_type'].constantize.find(payload[0]['resource_id'])
-      else
-        not_unauthorised
+        not_unauthorised unless authorize_with_auth_token
       end
     rescue => e
       not_unauthorised
@@ -29,8 +28,12 @@ module AuthenticationConcern
     render json: {error: 'unauthorised'}, status: :unauthorised
   end
 
-  def get_user_from_jwt_token
-
+  def authorize_with_auth_token
+    return false if current_user.auth_token.bytesize != @auth_token.bytesize
+    decoded_auth_token = @auth_token.unpack "C#{@auth_token.bytesize}"
+    res = 0
+    current_user.auth_token.each_byte { |byte| res |= byte^decoded_auth_token.shift}
+    res == 0
   end
 
   def assign_tokens_to_headers
