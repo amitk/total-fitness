@@ -4,7 +4,6 @@ module AuthenticationConcern
   included do
     before_action :get_tokens
     before_action :authenticate_using_token
-    before_action :get_user_from_jwt_token
     after_action :assign_tokens_to_headers
   end
 
@@ -17,7 +16,17 @@ module AuthenticationConcern
 
   def authenticate_using_token
     payload = JWT.decode(@jwt_token, @auth_token)
-    @current_user = payload
+      if payload
+        @current_user = payload[0]['resource_type'].constantize.find(payload[0]['resource_id'])
+      else
+        not_unauthorised
+      end
+    rescue => e
+      not_unauthorised
+  end
+
+  def not_unauthorised
+    render json: {error: 'unauthorised'}, status: :unauthorised
   end
 
   def get_user_from_jwt_token
