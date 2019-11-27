@@ -1,0 +1,37 @@
+{
+  "resources": [
+    {
+      "name": "Users",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "get one user",
+          "link": "users/get_one_user.json",
+          "groups": "all",
+          "route": "/api/v1/users/:id",
+          "method": "get"
+        },
+        {
+          "description": "listing users",
+          "link": "users/listing_users.json",
+          "groups": "all",
+          "route": "/api/v1/users",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "session",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "sign in user",
+          "link": "session/sign_in_user.json",
+          "groups": "all",
+          "route": "api/v1/sessions",
+          "method": "post"
+        }
+      ]
+    }
+  ]
+}
