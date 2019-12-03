@@ -1,7 +1,7 @@
 class Api::V1::SessionsController < Api::V1::BaseController
   skip_before_action :get_tokens, only: [:create]
   skip_before_action :authenticate_using_token, only: [:create]
-  skip_after_action :assign_tokens_to_headers, only: [:create], if: :user_not_found?
+  skip_after_action :assign_tokens_to_headers, if: :user_not_found?
 
   def create
     user = User.find_by(email: params[:user][:email], password: params[:user][:password])
