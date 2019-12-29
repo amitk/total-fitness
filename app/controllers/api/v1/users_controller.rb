@@ -34,7 +34,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   def update
     user = User.find(params[:id])
     if user
-      if user.update
+      if user.update(user_params)
         render_success(data: {
           user: serialize_resource(user, ::V1::UserSerializer),
           message: I18n.t('model.update.success', model_name: 'User')
@@ -63,6 +63,6 @@ class Api::V1::UsersController < Api::V1::BaseController
   private
 
   def user_params
-    params.required(:user).permit([:first_name, :last_name, :mobile, :email, :gender, :password])
+    params.required(:user).permit([:first_name, :last_name, :mobile, :email, :gender])
   end
 end
