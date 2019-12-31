@@ -1,6 +1,7 @@
 class Api::V1::UsersController < Api::V1::BaseController
   skip_before_action :get_tokens, only: [:create]
   skip_before_action :authenticate_using_token, only: [:create]
+  skip_after_action :assign_tokens_to_headers, only: [:create]
 
   def index
     users = User.all
